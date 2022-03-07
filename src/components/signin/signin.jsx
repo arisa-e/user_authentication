@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { useRef } from "react"
 import { Button, Card, Form, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useAuth } from '../context'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../AuthContext'
 
-const SignUp = () => {
+const SignIn = () => {
   const emailRef = useRef()
   const passwordRef=useRef()
-  const {signin}=useAuth
+  const { signin }=useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const navigate =useNavigate()
 
 
   async function handleSubmit(e){
@@ -21,10 +22,11 @@ const SignUp = () => {
         setError("")
         setLoading(true)
         await signin(emailRef.current.value, passwordRef.current.value)
+        navigate("/")
       }
       
-      catch{
-        setError("Failed to create account")
+      catch (err){
+        setError(err.message)
       }
 
       setLoading(false)
@@ -47,9 +49,8 @@ const SignUp = () => {
             <Button type="submit" 
             className="w-100"
             style={{marginTop:10}} 
-            // need refactering of the button when loading to disable 
             disabled={loading}
-            >Sign Up</Button>
+            >Sign In</Button>
           </Form>
         </Card.Body>
       </Card>
@@ -60,4 +61,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignIn
