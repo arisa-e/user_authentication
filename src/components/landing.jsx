@@ -14,7 +14,7 @@ const Landing = () => {
     try{
       setError("")
       await logout()
-      navigate("/signin")
+      navigate("/")
 
     }catch(err){
       err(err.message)
