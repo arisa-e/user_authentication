@@ -22,7 +22,7 @@ const SignIn = () => {
         setError("")
         setLoading(true)
         await signin(emailRef.current.value, passwordRef.current.value)
-        navigate("/")
+        navigate("/landing")
       }
       
       catch (err){
@@ -51,6 +51,7 @@ const SignIn = () => {
             style={{marginTop:10}} 
             disabled={loading}
             >Sign In</Button>
+            <Link to="forgotpassword">Forgot Password</Link>
           </Form>
         </Card.Body>
       </Card>
