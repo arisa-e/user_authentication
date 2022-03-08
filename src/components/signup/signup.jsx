@@ -27,7 +27,7 @@ const SignUp = () => {
         setError("")
         setLoading(true)
         await signup(emailRef.current.value, passwordRef.current.value)
-        navigate("/")
+        navigate("/landing")
       }
       
       catch (err){
@@ -52,7 +52,7 @@ const SignUp = () => {
               <Form.Control type="password" ref={passwordRef} required/>
             </Form.Group>
             <Form.Group id="reEnterPassword">
-              <Form.Label>fireRe Enter Password</Form.Label>
+              <Form.Label>Re Enter Password</Form.Label>
               <Form.Control type="password" ref={reEnteredPasswordRef} required/>
             </Form.Group>
             <Button type="submit" 
@@ -63,7 +63,7 @@ const SignUp = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already Have an account? <Link to="/signin">Sign in</Link>
+        Already Have an account? <Link to="/">Sign in</Link>
       </div>
     </>
   )
